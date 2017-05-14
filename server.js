@@ -7,7 +7,12 @@ app.get('/', function(request, response) {
   response.send('Hello Express!');
 });
 
-app.use('/api', require('./routes/routes.js'));
+app.use('/api', require('./routes.js'));
+// app.use('/greeting', require('./greeting.jsx'));
+
+app.set('views', __dirname + '/views');
+app.set('view engine', 'jsx');
+app.engine('jsx', require('express-react-views').createEngine());
 
 app.listen(3000);
 
