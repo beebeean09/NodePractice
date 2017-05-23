@@ -1,16 +1,26 @@
+const path = require('path');
+
 module.exports = {
-  devtool: 'eval',
-  entry: './app-client.js',
+  context: __dirname,
+  entry: "./app-server.js",
   output: {
-    path: __dirname + '/public/dist',
-    filename: 'bundle.js',
-    publicPath: '/dist/'
+    path: __dirname,
+    filename: "bundle.js"
   },
   module: {
-    loaders: [{
-      test: /\.js$/,
-      loaders: ['babel'],
-      exclude: /node_modules/
-    }]
+    loaders: [
+      {
+        test: [/\.jsx?$/, /\.js?$/],
+        exclude: /(node_modules|bower_components)/,
+        loader: 'babel',
+        query: {
+          presets: ['es2015', 'react']
+        }
+      }
+    ]
+  },
+  devtool: 'source-maps',
+  resolve: {
+    extensions: ["", ".js", ".jsx"]
   }
 };
