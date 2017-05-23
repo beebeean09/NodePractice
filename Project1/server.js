@@ -3,9 +3,7 @@ const app = express();
 const http = require('http');
 
 
-app.get('/', function(request, response) {
-  response.send('Hello Express!');
-});
+
 
 app.use('/api', require('./routes.js'));
 // app.use('/greeting', require('./greeting.jsx'));
